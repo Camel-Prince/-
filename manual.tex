@@ -1,7 +1,7 @@
 % -*- coding: utf-8 -*-
 
 \chapter{引言} \label{chpt:A} 
-  \section{研究背景}
+  \section{研究背景} \label{sec:A1}
   \begin{spacing}{1.5}
     洗钱是违法犯罪分子掩饰其非法所得的行为，
     处在违法犯罪链条的下游。
@@ -16,7 +16,7 @@
   \end{spacing}
 
 
-  \section{问题描述}
+  \section{问题描述} \label{sec:A2}
   基于如下数据对所有账户进行分类，类别包括：涉嫌参与洗钱的黑标账户和未参与洗钱的白标账户。
   数据列表如下：
   \begin{enumerate}
@@ -285,7 +285,17 @@
           \toprule
           符号 & 含义\\ 
           \midrule
-          
+          $\mathbf{x}$ & 观察到的序列 \\
+          $x_i$ & 序列$\mathbf{x}$中第$i$项 \\
+          $p(x_i | x_1,x_2,...,x_{i-1})$ & 序列中$x_i$出现的概率（条件概率）\\
+          $f(x_1, x_2, x_3,...,x_{i-1})$ & 泛指序列模型对序列中第$i$项之前的历史信息的建模 \\
+          $h_i$ & 潜变量；潜变量模型中对序列中第$i$项之前的历史信息的建模 \\
+          $y_i$ & 序列模型对$x_i$的预测 \\
+          $F(.)$ & 由$h_{i-1}$和$x_i$到$h_i$的映射 \\
+          $\Phi$ & 泛指各种非线性的激活函数 \\
+          $\sigma$ & 非线性激活函数$ReLU$ \\
+          $W_{**}, b_{*}$ & 仿射变换中的权重和偏移 \\ 
+          $\circ$ & 哈达玛积 \\
           \bottomrule
         \end{tabular}
       \end{center}
@@ -314,8 +324,7 @@
         \mathnormal{p(x_1)\centerdot p(x_2 | x_1) \centerdot 
         p(x_3 | x_1,x_2) \centerdot ... p(x_T| x_1,...x_{T-1}) }
       \end{equation}
-
-      公式\ref{seq_x_prob}中的某一项表示序列中某一时刻的观察值$x_t$的概率，
+      上式中的某一项表示序列中某一时刻的观察值$x_t$的概率，
       对该项中的历史信息$\mathnormal{x_1,x_2,...,x_{t-1}}$建模有：
       \begin{equation} \label{xt_prob_without_ht}
         \mathnormal{p(x_t | x_1, x_2, ..., x_{t-1})} = \mathnormal{
@@ -323,18 +332,16 @@
         }
       \end{equation}
       其中的$f(.)$表示对过去信息的建模。
-
-      我们引入潜变量$h_t$来表示$t$时刻之前的历史信息$f(x_1, x_2,...,x_{t-1})$,可以得到：
+      潜变量模型通过引入潜变量$h_t$来表示$t$时刻之前的历史信息$f(x_1, x_2,...,x_{t-1})$：
       \begin{equation} \label{xt_prob_with_ht}
         \mathnormal{p(x_t | x_1, x_2, ..., x_{t-1})} = \mathnormal{
           p(x_t | h_t)
         }
       \end{equation}
-      
       因此基于潜变量的序列模型(循环神经网络)可以描述为：
       接受一个序列$\mathbf{x} ={x_1, x_2, x_3,..., x_T}$作为输入，
       模型运行至$t$时刻时，
-      某种方式$F(.)$组合上一个时刻的潜变量$h_{t-1}$和当前的输入信息$x_t$得到$t$时刻的潜变量$h_t$，
+      通过映射$F(.)$将上一个时刻的潜变量$h_{t-1}$和当前的输入信息$x_t$映射到$t$时刻的潜变量$h_t$，
       然后根据$h_t$预测$t$时刻的结果$y_t = p(x_t | h_t)$。
       其中，组合上一时刻的潜变量和当前时刻的信息的映射$F(.)$
       成为了不同类型循环神经网络的主要区别。
@@ -411,7 +418,7 @@
       \end{equation}
       其中的$R_t \circ h_{t-1}$ 部分实际上是进行了对历史信息的筛选：
       当$R_t$接近1时， 公式\ref{gru_cand_ht}等价于公式\ref{va_rnn_hidden},
-      GRU将退化为Vanilla RNN;
+      GRU将近似退化为Vanilla RNN;
       而当$R_t$接近0时，$\tilde{h_t}$则完全不考虑历史信息，只考虑当前输入$x_t$。
       根据候选潜变量$\tilde{h_t}$以及更新门，我们可以得到新的潜变量如下：
       \begin{equation} \label{gru_ht}
@@ -426,13 +433,103 @@
       \caption{GRU流程图}
       \label{pic:gru}
     \end{figure}
-  \section{半监督学习}解释如何利用少数标签进行训练，伪代码
+  
+  \section{半监督学习} \label{sec:B3}
+
+  机器学习方法可以按照样本的标记情况分为三类：所有样本数据都无标签的无监督学习、所有样本数据都有标签的监督学习以及
+  本节的主要讨论对象、仅部分样本数据有标签的半监督学习。
+
+  无监督学习的样本数据不具有标签，因此只能从样本数据的分布和它们之间的关系着手，
+  将样本划分至不同簇（聚类）或者是给出高维样本的低维表示（降维）。
+  典型的无监督算法有:聚类算法中的K均值（K-means）
+  和降维算法中的主成分分析（Principle Component Analysis）等。
+
+  监督学习则是机器学习领域中发展最成熟、最为迅速的一类算法，
+  它利用有标签的样本数据训练出从样本数据到标签的映射，
+  从而对模型未见过的样本数据的标签进行预测。
+  典型的监督学习算法有：线性回归(Linear Regression)、
+  线性判别分析(Linear Discriminative Analysis)、
+  Logistic回归(Logisitic Regression)、
+  支持向量机(Support Vector Machine)、
+  朴素贝叶斯(Naive Bayes)、决策树（Decision Tree）
+  以及多层感知机（Multi-Layer Perceptron）等。
+
+  实际问题中，海量样本数据是容易获得的，
+  然而由于样本数据的标记工作专业性要求高、工作量巨大，
+  完成对这些海量样本数据的标记需要消耗大量时间、人力等资源。
+  因此有标签的样本数据和无标签的样本数据往往是同时存在的，
+  而且无标签样本数据常占很高的比例。
+  为了更充分地利用样本数据、减少数据和资源的浪费并提高模型的效果，
+  人们尝试把大量没有标签的样本数据同少数有标签的样本数据一起
+  注入到模型的训练过程中，半监督学习方法由此应运而生。
+  结合\ref{chpt:A}\ref{sec:B2}对问题的描述，
+  本文拟完成的反洗钱任务的样本数据表现为小部分样本数据有标签、大部分样本数据无标签，
+  因此应该采用半监督学习的模型。
+  下面介绍\ref{chpt:B}\ref{sec:B1}中的GCN是如何进行半监督学习的。
+
+  从公式\ref{gcn_conv_4}可以看出GCN的卷积核
+  $\tilde{\mathbf{D}}^{-\frac{1}{2}} \tilde{\mathbf{A}} \tilde{\mathbf{D}}^{-\frac{1}{2}} \in \mathbb{R}^{n*n}$是非参数化的，
+  即它只取决于整张图的拓扑结构（邻接矩阵）。
+  这样的特点使得我们能够利用所有样本数据得到全局共享的卷积核，
+  接着对所有样本的特征映射$\mathbf{X} \in \mathbb{R}^{n*d}$依次进行
+  卷积操作、仿射变换和非线性激活操作。
+  至此GCN完成了一次前向传播（$Forward$）而没有关心样本数据的标记情况。
+  GCN完成前向传播转而进行后向传播（$Backward$）时则需要考虑样本数据的标记情况：
+  只利用带有标签的样本对应的输出层特征映射和标记情况进行损失的计算和网络参数的更新。综上所述，
+  GCN利用全体样本数据的邻接矩阵和特征映射完成了前向传播，
+  而利用带有标签的样本数据完成了后向传播从而实现半监督学习，其训练过程的伪代码如下：
+
+    \begin{algorithm}[htbp]
+      \caption{GCN训练过程伪代码}
+      \label{alg:GCN-process}
+      \hspace*{0.04in}{\bf Inputs:}\\
+      模型层数$m$\\
+      模型$model$\\
+      所有样本形成的邻接矩阵$\mathbf{A} \in \mathbb{R}^{n*n}$\\
+      所有样本的特征映射$\mathbf{X}^{0} \in \mathbb{R}^{n*d}$\\
+      第一层网络参数$\Theta^{0}$\\
+      损失函数$\mathbf{L}$\\
+      所有样本的标记情况$Labels \in \mathbb{R}^{n}$\\
+      带有标签的训练样本的筛选器$train\_mask \in \mathbb{R}^{n_{train}}$ \\
+      \begin{algorithmic}[1]
+        \State 由$\mathbf{A}$得到全局共享的卷积核
+        $\tilde{\mathbf{D}}^{-\frac{1}{2}} 
+        \tilde{\mathbf{A}} 
+        \tilde{\mathbf{D}}^{-\frac{1}{2}}$ \\
+        \\
+        \% $\textbf{Forward:} $
+        \For{$i \ in \ range(m)$ }
+          \State 
+          $\mathbf{X}^{i+1} = \sigma(
+            \tilde{\mathbf{D}}^{-\frac{1}{2}} \tilde{\mathbf{A}} \tilde{\mathbf{D}}^{-\frac{1}{2}}
+            \mathbf{X}^{i}\Theta^{i}
+            )$
+        \EndFor
+        \\
+        \State
+        \% $\textbf{Backward:}$\\
+        输出的特征映射：$\mathbf{X}^{m} \in \mathbb{R}^{n*{d^m}}$ \\
+        筛选出带有标签的训练样本的特征映射： $\mathbf{X}^{m}_{train} = \mathbf{X}^{m}[train\_mask]$ \\
+        筛选出带有标签的训练样本的标记情况： $Labels_{train} = Labels[train\_mask]$ \\ 
+        利用带有标签的训练样本计算损失：$Loss = \mathbf{L}(\mathbf{X}^{m}_{train}, Labels_{train})$ \\
+
+        $Loss.backward()$ \\
+        $Update(model)$
+      \end{algorithmic}
+    \end{algorithm}
+
+  \section{本章小结} \label{sec:B4}
+  本章对EvolveGCN所需的理论基础进行了介绍。
+  详细地说明了图卷积神经网络GCN和循环神经网络GRU、LSTM的原理,
+  并介绍了GCN进行半监督学习的运行。
+  接下的一章我们将以此为基础，详细介绍EvolveGCN的模型原理。
 
 \chapter{模型原理} \label{chpt:C}
   \section{数据存储和处理方式}
   \begin{enumerate}
     \item 按时间划分；多重边的合并；有向图转为无向图； 稀疏矩阵的存储；
   \end{enumerate}
+  
   \section{RNN驱动训练}
   上图和解析；
     

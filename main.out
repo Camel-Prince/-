@@ -11,14 +11,15 @@
 \BOOKMARK [1][-]{section.2.1}{第一节 图卷积神经网络}{chapter.2}% 11
 \BOOKMARK [1][-]{section.2.2}{第二节 循环神经网络}{chapter.2}% 12
 \BOOKMARK [1][-]{section.2.3}{第三节 半监督学习}{chapter.2}% 13
-\BOOKMARK [0][-]{chapter.3}{第三章 模型原理}{}% 14
-\BOOKMARK [1][-]{section.3.1}{第一节 数据存储和处理方式}{chapter.3}% 15
-\BOOKMARK [1][-]{section.3.2}{第二节 RNN驱动训练}{chapter.3}% 16
-\BOOKMARK [1][-]{section.3.3}{第三节 模型评价机制}{chapter.3}% 17
-\BOOKMARK [0][-]{chapter.4}{第四章 实验}{}% 18
-\BOOKMARK [1][-]{section.4.1}{第一节 实验条件}{chapter.4}% 19
-\BOOKMARK [1][-]{section.4.2}{第二节 实验流程}{chapter.4}% 20
-\BOOKMARK [1][-]{section.4.3}{第三节 实验结果}{chapter.4}% 21
-\BOOKMARK [0][-]{chapter.5}{第五章 讨论和总结}{}% 22
-\BOOKMARK [0][-]{section*.4}{致 谢 }{}% 23
-\BOOKMARK [0][-]{section*.4}{个人简历 }{}% 24
+\BOOKMARK [1][-]{section.2.4}{第四节 本章小结}{chapter.2}% 14
+\BOOKMARK [0][-]{chapter.3}{第三章 模型原理}{}% 15
+\BOOKMARK [1][-]{section.3.1}{第一节 数据存储和处理方式}{chapter.3}% 16
+\BOOKMARK [1][-]{section.3.2}{第二节 RNN驱动训练}{chapter.3}% 17
+\BOOKMARK [1][-]{section.3.3}{第三节 模型评价机制}{chapter.3}% 18
+\BOOKMARK [0][-]{chapter.4}{第四章 实验}{}% 19
+\BOOKMARK [1][-]{section.4.1}{第一节 实验条件}{chapter.4}% 20
+\BOOKMARK [1][-]{section.4.2}{第二节 实验流程}{chapter.4}% 21
+\BOOKMARK [1][-]{section.4.3}{第三节 实验结果}{chapter.4}% 22
+\BOOKMARK [0][-]{chapter.5}{第五章 讨论和总结}{}% 23
+\BOOKMARK [0][-]{section*.4}{致 谢 }{}% 24
+\BOOKMARK [0][-]{section*.4}{个人简历 }{}% 25
