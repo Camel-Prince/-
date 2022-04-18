@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.7.7)  13 APR 2022 15:40
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.7.7)  17 APR 2022 16:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1380,41 +1380,38 @@ LaTeX Warning: Citation 'SGC' on page 2 undefined on input line 65.
 
 [2] [3]
 第\CJKnumber {2}章 2.
-[4
 
-]
-
-LaTeX Warning: Citation 'AlexNet' on page 5 undefined on input line 117.
+LaTeX Warning: Citation 'AlexNet' on page 4 undefined on input line 117.
 
 
-LaTeX Warning: Citation 'FCN' on page 5 undefined on input line 118.
+LaTeX Warning: Citation 'FCN' on page 4 undefined on input line 118.
 
 
-LaTeX Warning: Citation 'VideoSlowFast' on page 5 undefined on input line 118.
+LaTeX Warning: Citation 'VideoSlowFast' on page 4 undefined on input line 118.
 
 
-LaTeX Warning: Citation 'AudioSlowFast' on page 5 undefined on input line 118.
+LaTeX Warning: Citation 'AudioSlowFast' on page 4 undefined on input line 118.
 
 
-LaTeX Warning: Citation 'Transferable' on page 5 undefined on input line 119.
+LaTeX Warning: Citation 'Transferable' on page 4 undefined on input line 119.
 
 
-LaTeX Warning: Citation 'kipfGCN' on page 5 undefined on input line 129.
+LaTeX Warning: Citation 'kipfGCN' on page 4 undefined on input line 129.
 
 
-LaTeX Warning: Citation 'SGC' on page 5 undefined on input line 129.
+LaTeX Warning: Citation 'SGC' on page 4 undefined on input line 129.
 
 
-LaTeX Warning: Citation 'ChebyNet' on page 5 undefined on input line 129.
+LaTeX Warning: Citation 'ChebyNet' on page 4 undefined on input line 129.
 
 
-LaTeX Warning: Citation 'GAT' on page 5 undefined on input line 129.
+LaTeX Warning: Citation 'GAT' on page 4 undefined on input line 129.
 
 
-LaTeX Warning: Citation 'GraphSage' on page 5 undefined on input line 129.
+LaTeX Warning: Citation 'GraphSage' on page 4 undefined on input line 129.
 
 
-LaTeX Warning: Citation 'ConfGCN' on page 5 undefined on input line 129.
+LaTeX Warning: Citation 'ConfGCN' on page 4 undefined on input line 129.
 
 File: Figures/cnn_conv_1.png Graphic file (type bmp)
 <Figures/cnn_conv_1.png>
@@ -1427,22 +1424,21 @@ File: Figures/graph_conv_2.png Graphic file (type bmp)
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
+ [4
+
+]
+Underfull \vbox (badness 1642) has occurred while \output is active []
+
  [5]
-Underfull \vbox (badness 4608) has occurred while \output is active []
 
- [6]
-
-LaTeX Warning: Citation 'ChebyNet' on page 7 undefined on input line 212.
+LaTeX Warning: Citation 'ChebyNet' on page 6 undefined on input line 212.
 
 
-LaTeX Warning: Citation 'kipfGCN' on page 7 undefined on input line 231.
+LaTeX Warning: Citation 'kipfGCN' on page 6 undefined on input line 231.
 
+[6]
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [7]
-
-LaTeX Warning: Citation 'kipfGCN' on page 8 undefined on input line 256.
+LaTeX Warning: Citation 'kipfGCN' on page 7 undefined on input line 256.
 
 File: Figures/GCN-model.png Graphic file (type bmp)
 <Figures/GCN-model.png>
@@ -1453,53 +1449,39 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.77005> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 276.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6.30006> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 276.
-
-Overfull \hbox (25.53204pt too wide) in paragraph at lines 284--301
- [][] 
- []
-
-[8]
-Underfull \vbox (badness 4492) has occurred while \output is active []
-
- [9]
+[7] [8]
 File: Figures/RNNs.png Graphic file (type bmp)
 <Figures/RNNs.png>
- [10]
+
+Underfull \vbox (badness 4859) has occurred while \output is active []
+
+ [9]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [11]
+ [10]
 File: Figures/LSTM.png Graphic file (type bmp)
 <Figures/LSTM.png>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [12]
+ [11]
 File: Figures/GRU.png Graphic file (type bmp)
 <Figures/GRU.png>
+ [12] [13]
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 486.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [13]
-Underfull \vbox (badness 7099) has occurred while \output is active []
-
- [14]
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 483.
-
-Underfull \hbox (badness 10000) in paragraph at lines 485--494
+Underfull \hbox (badness 10000) in paragraph at lines 488--497
 
  []
 
-[15]
+[14]
 第\CJKnumber {3}章 3.
-[16
+[15
 
 ]
 第\CJKnumber {4}章 4.
-[17
+[16
 
 ]
 第\CJKnumber {5}章 5.
-) [18
+) [17
 
 ]
 \openout2 = `references.aux'.
@@ -1516,7 +1498,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                \hskip 12.0pt
 (hyperref)                replaced by space on input line 3.
 
-) [19
+) [18
 
 
 
@@ -1559,7 +1541,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 22--130
 
  []
 
-[20
+[19
 
 
 
@@ -1593,10 +1575,10 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 132.
 Here is how much of TeX's memory you used:
  51630 strings out of 492916
  1173919 string characters out of 6133346
- 1716717 words of memory out of 5000000
+ 1714712 words of memory out of 5000000
  54959 multiletter control sequences out of 15000+600000
  570618 words of font info for 184 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  62i,12n,103p,1161b,1377s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.pdf (25 pages).
+Output written on main.pdf (24 pages).

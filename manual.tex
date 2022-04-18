@@ -79,37 +79,37 @@
 \chapter{理论基础} \label{chpt:B}
   \section{图卷积神经网络} \label{sec:B1}
   % GCN部分的符号表
-  \begin{center}
-    \tablecaption{本节符号表}
-    \begin{tabular}{ll}
-      \toprule
-      符号 & 含义\\ 
-      \midrule
-      $G$ & 无向图 \\
-      $E$ & 图的边集合 \\
-      $V$ & 图的节点集合 \\
-      $n$ & 节点个数 \\
-      $d$ & 一个节点的特征向量维数，也是图上信号的组数 \\
-      $\mathbf{I}_n\in \mathbb{R}^{n \times n}$ & 单位矩阵 \\
-      $\mathbf{A} \in \mathbb{R}^{n \times n}$ & 图的邻接矩阵，为0-1矩阵或者带权重的矩阵 \\
-      $\mathbf{D}\in \mathbb{R}^{n \times n}$ & 图的度矩阵 \\
-      $\mathbf{L}\in \mathbb{R}^{n \times n}$ & 图的拉普拉斯矩阵 \\
-      % $\mathnormal{u}_i \in \mathbb{R}^{n}$ & $\mathbf{L}$的第$i$个特征向量 \\
-      $\mathbf{U}\in \mathbb{R}^{n \times n}$ & 特征向量矩阵 \\
-      % $\lambda_i \in \mathbb{R}$ & $\mathbf{L}$的第$i$个特征值 \\ 
-      $\Lambda\in \mathbb{R}^{n \times n}$ & 特征值矩阵（对角矩阵）\\
-      $F$ & 图上的傅立叶变换 \\
-      $F^{-1}$ & 图上的傅立叶逆变换 \\
-      $f,g \in \mathbb{R}^{d}$ & 图上的原始信号 \\
-      $\hat{f}, \hat{g}\in \mathbb{R}^{d}$ & 图上的谱域信号 \\
-      $f \times g$ & 图上两个信号的卷积 \\
-      $*_{G}$ & 图卷积运算符 \\
-      $\circ$ & 哈达玛积 \\
-      $GConv(.)$ & 图卷积算子 \\
-      $\mathbf{X}^{m}\in \mathbb{R}^{n \times d}$ & 图卷积神经网络中第$m$层的特征映射 \\
-      \bottomrule
-    \end{tabular}
-  \end{center}
+  % \begin{center}
+  %   \tablecaption{本节符号表}
+  %   \begin{tabular}{ll}
+  %     \toprule
+  %     符号 & 含义\\ 
+  %     \midrule
+  %     $G$ & 无向图 \\
+  %     $E$ & 图的边集合 \\
+  %     $V$ & 图的节点集合 \\
+  %     $n$ & 节点个数 \\
+  %     $d$ & 一个节点的特征向量维数，也是图上信号的组数 \\
+  %     $\mathbf{I}_n\in \mathbb{R}^{n \times n}$ & 单位矩阵 \\
+  %     $\mathbf{A} \in \mathbb{R}^{n \times n}$ & 图的邻接矩阵，为0-1矩阵或者带权重的矩阵 \\
+  %     $\mathbf{D}\in \mathbb{R}^{n \times n}$ & 图的度矩阵 \\
+  %     $\mathbf{L}\in \mathbb{R}^{n \times n}$ & 图的拉普拉斯矩阵 \\
+  %     % $\mathnormal{u}_i \in \mathbb{R}^{n}$ & $\mathbf{L}$的第$i$个特征向量 \\
+  %     $\mathbf{U}\in \mathbb{R}^{n \times n}$ & 特征向量矩阵 \\
+  %     % $\lambda_i \in \mathbb{R}$ & $\mathbf{L}$的第$i$个特征值 \\ 
+  %     $\Lambda\in \mathbb{R}^{n \times n}$ & 特征值矩阵（对角矩阵）\\
+  %     $F$ & 图上的傅立叶变换 \\
+  %     $F^{-1}$ & 图上的傅立叶逆变换 \\
+  %     $f,g \in \mathbb{R}^{d}$ & 图上的原始信号 \\
+  %     $\hat{f}, \hat{g}\in \mathbb{R}^{d}$ & 图上的谱域信号 \\
+  %     $f \times g$ & 图上两个信号的卷积 \\
+  %     $*_{G}$ & 图卷积运算符 \\
+  %     $\circ$ & 哈达玛积 \\
+  %     $GConv(.)$ & 图卷积算子 \\
+  %     $\mathbf{X}^{m}\in \mathbb{R}^{n \times d}$ & 图卷积神经网络中第$m$层的特征映射 \\
+  %     \bottomrule
+  %   \end{tabular}
+  % \end{center}
   % GCN的理论推导 
 
   \textbf{2.1.1 欧式空间的卷积}
@@ -277,28 +277,29 @@
     \label{pic:GCN-model}
   \end{figure}
   
+  \newpage
   \section{循环神经网络} \label{sec:B2}
       % RNN部分的符号表
-      \begin{center}
-        \tablecaption{本节符号表}
-        \begin{tabular}{ll}
-          \toprule
-          符号 & 含义\\ 
-          \midrule
-          $\mathbf{x}$ & 观察到的序列 \\
-          $x_i$ & 序列$\mathbf{x}$中第$i$项 \\
-          $p(x_i | x_1,x_2,...,x_{i-1})$ & 序列中$x_i$出现的概率（条件概率）\\
-          $f(x_1, x_2, x_3,...,x_{i-1})$ & 泛指序列模型对序列中第$i$项之前的历史信息的建模 \\
-          $h_i$ & 潜变量；潜变量模型中对序列中第$i$项之前的历史信息的建模 \\
-          $y_i$ & 序列模型对$x_i$的预测 \\
-          $F(.)$ & 由$h_{i-1}$和$x_i$到$h_i$的映射 \\
-          $\Phi$ & 泛指各种非线性的激活函数 \\
-          $\sigma$ & 非线性激活函数$ReLU$ \\
-          $W_{**}, b_{*}$ & 仿射变换中的权重和偏移 \\ 
-          $\circ$ & 哈达玛积 \\
-          \bottomrule
-        \end{tabular}
-      \end{center}
+      % \begin{center}
+      %   \tablecaption{本节符号表}
+      %   \begin{tabular}{ll}
+      %     \toprule
+      %     符号 & 含义\\ 
+      %     \midrule
+      %     $\mathbf{x}$ & 观察到的序列 \\
+      %     $x_i$ & 序列$\mathbf{x}$中第$i$项 \\
+      %     $p(x_i | x_1,x_2,...,x_{i-1})$ & 序列中$x_i$出现的概率（条件概率）\\
+      %     $f(x_1, x_2, x_3,...,x_{i-1})$ & 泛指序列模型对序列中第$i$项之前的历史信息的建模 \\
+      %     $h_i$ & 潜变量；潜变量模型中对序列中第$i$项之前的历史信息的建模 \\
+      %     $y_i$ & 序列模型对$x_i$的预测 \\
+      %     $F(.)$ & 由$h_{i-1}$和$x_i$到$h_i$的映射 \\
+      %     $\Phi$ & 泛指各种非线性的激活函数 \\
+      %     $\sigma$ & 非线性激活函数$ReLU$ \\
+      %     $W_{**}, b_{*}$ & 仿射变换中的权重和偏移 \\ 
+      %     $\circ$ & 哈达玛积 \\
+      %     \bottomrule
+      %   \end{tabular}
+      % \end{center}
 
       上节我们详细地介绍了图卷积和欧式空间卷积的不同之处和定义的难点，
       并讲述了本文关注的图卷积神经网络GCN中一阶近似图卷积(公式\ref{gcn_conv_4})的理论
@@ -475,7 +476,9 @@
   卷积操作、仿射变换和非线性激活操作。
   至此GCN完成了一次前向传播（$Forward$）而没有关心样本数据的标记情况。
   GCN完成前向传播转而进行后向传播（$Backward$）时则需要考虑样本数据的标记情况：
-  只利用带有标签的样本对应的输出层特征映射和标记情况进行损失的计算和网络参数的更新。综上所述，
+  只利用带有标签的样本对应的输出层特征映射和标记情况进行损失的计算和网络参数的更新。
+  \newpage
+  综上所述，
   GCN利用全体样本数据的邻接矩阵和特征映射完成了前向传播，
   而利用带有标签的样本数据完成了后向传播从而实现半监督学习，其训练过程的伪代码如下：
 
@@ -542,8 +545,10 @@
   \section{实验结果}
 
 \chapter{讨论和总结} \label{chpt:E}
-  \begin{enumerate}
+\begin{enumerate}
     \item 优点：适用于动态图，把时序信息融合在训练过程中
     \item 缺点：基于GCN，使得其必然是Transductive的，
     且对内存有极高要求
-  \end{enumerate}
+\end{enumerate}
+
+  
