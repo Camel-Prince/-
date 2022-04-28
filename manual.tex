@@ -483,6 +483,7 @@
   而利用带有标签的样本数据完成了后向传播从而实现半监督学习，其训练过程的伪代码如下：
 
     \begin{algorithm}[htbp]
+      \counterwithin{algorithm}{chapter}
       \caption{GCN训练过程伪代码}
       \label{alg:GCN-process}
       \hspace*{0.04in}{\bf Inputs:}\\
@@ -535,11 +536,45 @@
   
   \section{RNN驱动训练}
   上图和解析；
-    
+  
+  \begin{algorithm}[htbp]
+    \counterwithin{algorithm}{chapter}
+    \caption{EvolveGCN单元的运算过程}
+    \label{alg:GCN-process}
+    \hspace*{0.04in}{\bf Inputs:}\\
+    前一时刻GCN的参数,亦即前一时刻RNN的隐藏单元$\Theta_{t-1}^{l}$ \\
+    当前时刻GCN的输入特征映射，亦即当前时刻RNN的输入单元$\mathbf{X}_{t}^{l}$ \\
+    \begin{algorithmic}[1]
+      \State 结合公式(2.25)至(2.28)为一个GRU单元的操作$gru(input, previous\_hidden)$，使用$gru(.)$对参数进行更新有:\\
+      $\Theta_{t}^{l} = gru(\mathbf{X}_{t}^{l}, \Theta_{t-1}^{l})$ \\
+      利用公式(2.13)对$\mathbf{X}_{t}^{l}$进行图卷积操作：\\
+      $\mathbf{X}_{t}^{l+1} = Gconv(\mathbf{X}_{t}^{l}, \Theta_{t}^{l})$
+      
+    \end{algorithmic}
+  \end{algorithm}
+  
   \section{模型评价机制}
   分类别的precision、recall和f1；着重关注黑标节点的precision
 
 \chapter{实验} \label{chpt:D}
+  \begin{algorithm}[htbp]
+    \counterwithin{algorithm}{chapter}
+    \caption{EvolveGCN参数对齐的方式(以第一层、第一时刻为例)}
+    \label{alg:GCN-process}
+    \hspace*{0.04in}{\bf Inputs:}\\
+    第$1$层第$1$时间步的输入的特征映射：$\mathbf{X}_{1}^{1} \in \mathbb{R}^{n*d}$ \\
+    第$1$层第$1$时间步输出的特征映射的列数$d_1$ \\
+    \hspace*{0.04in}{\bf Outputs:}\\ 
+    对齐后GRU的输入特征映射:$\mathbf{W}_{1}^{1} \in \mathbb{R}^{d*d_1}$
+    \begin{algorithmic}[1]
+      \State $\textbf{function}$ : $\mathbf{W}_{1}^{1}  = transfer(\mathbf{X}_{1}^{1}, d_1)$\\
+      初始化打分向量：\\ $scores \in \mathbb{R}^{d}$; \\
+      以-stdv和stdv为左右边界，按找均匀分布得到scores向量:\\$scores \thicksim uniform(-stdv, stdv)$,其中$stdv = \frac{1}{\sqrt{d}}$ \\
+      计算辅助向量: $y = \frac{\mathbf{X}_1^1 * scores}{\Vert scores \Vert} $, 其中$y \in \mathbb{R}^{n}$\\
+      在$y$中筛选出$d_1$行有：$indices = top-indices(y, d_1)$ \\
+      对输入做变换有：$\mathbf{W}_1^1 ={[ \mathbf{X}_1^1 * tanh(y)]}_{indices}$
+    \end{algorithmic}
+  \end{algorithm}
   \section{实验条件}
   \section{实验流程}
   \section{实验结果}

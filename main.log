@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.7.7)  17 APR 2022 16:10
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.7.7)  27 APR 2022 10:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1204,7 +1204,14 @@ File: english.lbx 2018/11/02 v3.12 biblatex localization (PK/MW)
 Package: xeCJK-listings 2019/04/07 v3.7.2 xeCJK patch file for listings
 \l__xeCJK_listings_max_char_int=\count479
 \l__xeCJK_listings_flag_int=\count480
-) (./main.aux (./abstract.aux) (./manual.aux) (./references.aux) (./acknowledgements.aux) (./appendices.aux) (./resume.aux))
+) (./main.aux (./abstract.aux) (./manual.aux
+
+LaTeX Warning: Label `alg:GCN-process' multiply defined.
+
+
+LaTeX Warning: Label `alg:GCN-process' multiply defined.
+
+) (./references.aux) (./acknowledgements.aux) (./appendices.aux) (./resume.aux))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 95.
@@ -1465,14 +1472,24 @@ File: Figures/LSTM.png Graphic file (type bmp)
 File: Figures/GRU.png Graphic file (type bmp)
 <Figures/GRU.png>
  [12] [13]
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 486.
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 487.
 
-Underfull \hbox (badness 10000) in paragraph at lines 488--497
+Underfull \hbox (badness 10000) in paragraph at lines 489--498
 
  []
 
 [14]
 第\CJKnumber {3}章 3.
+
+Underfull \hbox (badness 10000) in paragraph at lines 544--547
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 548--549
+[]\TU/simsun.ttf(0)/m/n/12 结 合 公 式 \TU/TimesNewRoman(0)/m/n/12 (2.25) \TU/simsun.ttf(0)/m/n/12 至 \TU/TimesNewRoman(0)/m/n/12 (2.28) \TU/simsun.ttf(0)/m/n/12 为 一 个 \TU/TimesNewRoman(0)/m/n/12 GRU \TU/simsun.ttf(0)/m/n/12 单 元 的 操 作
+ []
+
 [15
 
 ]
@@ -1548,11 +1565,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 22--130
 
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 132.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 132.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 145.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 145.
  (./main.aux (./abstract.aux) (./manual.aux) (./references.aux) (./acknowledgements.aux) (./appendices.aux) (./resume.aux))
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 132.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 132.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 145.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 145.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 78B8FA87A4C792B3385FA738A0920CE8.
 
@@ -1563,6 +1580,9 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 LaTeX Warning: There were undefined references.
 
 
+LaTeX Warning: There were multiply-defined labels.
+
+
 Package biblatex Warning: Please (re)run Biber on the file:
 (biblatex)                main
 (biblatex)                and rerun LaTeX afterwards.
@@ -1570,12 +1590,12 @@ Package biblatex Warning: Please (re)run Biber on the file:
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 132.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 145.
  ) 
 Here is how much of TeX's memory you used:
  51630 strings out of 492916
  1173919 string characters out of 6133346
- 1714712 words of memory out of 5000000
+ 1714747 words of memory out of 5000000
  54959 multiletter control sequences out of 15000+600000
  570618 words of font info for 184 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
